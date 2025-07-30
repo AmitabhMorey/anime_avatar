@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Together AI Anime Avatar Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-magic"></i> Anime Avatar Generator</h1>
+            <p>Transform your photos into anime-style avatars using Together AI</p>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <div class="form-group">
+                    <label for="image-upload">Upload your photo:</label>
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="image-upload" accept="image/*" hidden>
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload or drag & drop your image</p>
+                            <small>Supports JPG, PNG, WebP (max 10MB)</small>
+                        </div>
+                    </div>
+                    <div class="image-preview" id="image-preview"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="style-prompt">Style description (optional):</label>
+                    <textarea 
+                        id="style-prompt" 
+                        placeholder="e.g., cute anime girl, colorful hair, big eyes, studio ghibli style..."
+                        rows="3"
+                        maxlength="500"
+                    ></textarea>
+                    <div class="char-counter">
+                        <span id="char-count">0</span>/500 characters
+                    </div>
+                </div>
+
+                <div class="model-selection">
+                    <label for="model-select">Image Model:</label>
+                    <select id="model-select">
+                        <option value="black-forest-labs/FLUX.1-schnell">FLUX.1 Schnell (Fast)</option>
+                        <option value="black-forest-labs/FLUX.1-pro">FLUX.1 Pro (High Quality)</option>
+                        <option value="stabilityai/stable-diffusion-xl-base-1.0">Stable Diffusion XL</option>
+                    </select>
+                </div>
+
+                <div class="controls">
+                    <button id="generate-btn" class="btn btn-primary" disabled>
+                        <i class="fas fa-magic"></i>
+                        Generate Avatar
+                    </button>
+                    <button id="clear-btn" class="btn btn-secondary">
+                        <i class="fas fa-trash"></i>
+                        Clear All
+                    </button>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="section-header">
+                    <h2>Generated Avatar</h2>
+                    <div id="loading-indicator" class="loading-indicator hidden">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        Creating your anime avatar...
+                    </div>
+                </div>
+                
+                <div id="response-container" class="response-container">
+                    <div id="empty-state" class="empty-state">
+                        <i class="fas fa-image"></i>
+                        <p>Your anime avatar will appear here</p>
+                        <small>Upload an image and click Generate Avatar to start</small>
+                    </div>
+                    
+                    <div id="avatar-result" class="avatar-result hidden">
+                        <img id="generated-avatar" class="generated-image" alt="Generated anime avatar">
+                        <div class="avatar-actions">
+                            <button id="download-btn" class="btn btn-secondary">
+                                <i class="fas fa-download"></i>
+                                Download Avatar
+                            </button>
+                            <button id="regenerate-btn" class="btn btn-primary">
+                                <i class="fas fa-redo"></i>
+                                Generate Another
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="error-message" class="error-message hidden">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div class="error-text"></div>
+                    </div>
+                </div>
+
+                <div id="generation-meta" class="response-meta hidden">
+                    <div class="meta-item">
+                        <span class="meta-label">Model Used:</span>
+                        <span id="used-model"></span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Generation Time:</span>
+                        <span id="generation-time"></span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Image Style:</span>
+                        <span id="style-used">Anime Avatar</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Anime Avatar Generator - Powered by Together AI</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+̀
